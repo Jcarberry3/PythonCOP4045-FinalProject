@@ -3,15 +3,18 @@ import os
 import sqlite3
 from contextlib import closing
 
+import os 
+
 from objects import Item
 
 conn = None
+
 
 def connect():
     global conn
     if not conn:
         if sys.platform == "win32":
-            DB_FILE = r"C:\Users\Jonathan\Desktop\FAU\Semester 7\Python\Final Proj\db\itemDB.sqlite"
+            DB_FILE = dir_path = os.path.dirname(os.path.realpath(__file__)) + r"\db\itemDB.sqlite"
         else:
             HOME = os.environ["HOME"]
             DB_FILE = HOME + "db/itemDB.sqlite"
